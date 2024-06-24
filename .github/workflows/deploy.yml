@@ -3,7 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set this to your default branch
+      - main # Set this to your default branch
+
+permissions:
+  contents: read
+  pages: write
 
 jobs:
   build-and-deploy:
@@ -15,10 +19,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Specify the Node.js version you need
+          node-version: "20" # Specify the Node.js version you need
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # Set this to your build output directory
+          publish_dir: ./public # Set this to your build output directory
