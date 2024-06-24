@@ -6,24 +6,14 @@ on:
       - main  # Set this to your default branch
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '19'  # Specify the Node.js version you need
-
-      - name: Install dependencies and build
-        run: |
-          npm install
-          npm run build  # Replace this with your build script if necessary
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # Set this to your build output directory
+          publish_dir: .
