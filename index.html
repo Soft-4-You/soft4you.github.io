@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="this">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,6 +38,19 @@
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* Define a transition duration during page visits */
+      html.is-changing .transition-fade {
+        transition: opacity 100ms;
+        opacity: 1;
+      }
+
+      /* Define the styles for the unloaded pages */
+      html.is-animating .transition-fade {
+        opacity: 0;
+      }
+    </style>
   </head>
   <body>
     <div id="intro-wrapper" class="intro-wrapper">
@@ -47,7 +60,11 @@
       </h1>
     </div>
 
-    <main id="container" class="container hide-temp" data-aos="zoom-in">
+    <main
+      id="container"
+      class="container hide-temp transition-fade"
+      data-aos="zoom-in"
+    >
       <!-- logo -->
       <section class="logo box" data-aos="fade-right" data-aos-delay="300">
         <div class="logo-img-wrapper">
@@ -174,7 +191,7 @@
                 d="M2 5C2 4.17157 2.67157 3.5 3.5 3.5H8.87868C9.2765 3.5 9.65804 3.65804 9.93934 3.93934L11.5607 5.56066C11.842 5.84197 12.2235 6 12.6213 6H20.5C21.3284 6 22 6.67157 22 7.5V18C22 18.8284 21.3284 19.5 20.5 19.5H3.5C2.67157 19.5 2 18.8284 2 18V5Z"
               />
             </svg>
-            <a class="btn">Show More</a>
+            <a href="ui_portfolio.html" class="btn">Show More</a>
           </div>
         </div>
       </section>
@@ -291,7 +308,10 @@
         </div>
       </section>
     </main>
+
     <script src="aos.js" defer></script>
+    <script src="https://unpkg.com/swup@4"></script>
+
     <script defer>
       function canHover() {
         return window.matchMedia("(hover: hover)").matches;
@@ -306,7 +326,7 @@
           setTimeout(() => {
             elementToHide.remove();
             elementToShow.classList.remove("hide-temp");
-          }, 2500);
+          }, 1600);
         }
       }
 
@@ -316,7 +336,7 @@
           AOS.init({
             once: true,
           });
-        }, 2600);
+        }, 1700);
 
         // Fixing the hover transition not working because of a conflict with Aos library.
         if (canHover()) {
@@ -325,7 +345,7 @@
             if (aosCssLink) {
               aosCssLink.parentNode.removeChild(aosCssLink);
             }
-          }, 3800);
+          }, 2600);
         }
       };
 
@@ -355,10 +375,19 @@
 
       checkScreenWidth();
     </script>
+
+    <script type="module">
+      import Swup from "https://unpkg.com/swup@4?module";
+
+      var swup = new Swup({
+        containers: ["#this"],
+      });
+    </script>
   </body>
 </html>
 
 <!-- TODO: 
   . Add sound to the website
   . Finish the other pages
+  . Scroll bar design 
   -->

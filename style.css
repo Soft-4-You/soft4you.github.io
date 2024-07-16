@@ -38,9 +38,9 @@ body {
 .company-name {
   text-align: center;
   font-size: 3rem;
-  -webkit-animation: focus-in-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+  -webkit-animation: focus-in-expand 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both;
-  animation: focus-in-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: focus-in-expand 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes focus-in-expand {
@@ -73,9 +73,9 @@ body {
 .company-slogan {
   text-align: center;
   font-size: clamp(0.9rem, 4vw, 2rem);
-  -webkit-animation: focus-in-expand2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.8s both;
-  animation: focus-in-expand2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+  -webkit-animation: focus-in-expand2 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    0.6s both;
+  animation: focus-in-expand2 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
 }
 
 @-webkit-keyframes focus-in-expand2 {
