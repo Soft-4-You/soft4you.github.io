@@ -30,11 +30,14 @@
       href="mstile-150x150.png"
     />
     <meta name="theme-color" content="#000000" />
-    <link rel="preload" href="aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link
+      id="aos-css"
+      rel="preload"
+      href="aos.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <link rel="stylesheet" href="style.css" />
-    <noscript>
-        <link rel="stylesheet" href="aos.css">
-    </noscript>
   </head>
   <body>
     <div id="intro-wrapper" class="intro-wrapper">
@@ -290,8 +293,11 @@
     </main>
     <script src="aos.js" defer></script>
     <script defer>
-      // Intro animation logic
+      function canHover() {
+        return window.matchMedia("(hover: hover)").matches;
+      }
 
+      // Intro animation logic
       function removeElementAfterDelay(elementId, elementToShowId) {
         const elementToHide = document.getElementById(elementId);
         const elementToShow = document.getElementById(elementToShowId);
@@ -311,8 +317,19 @@
             once: true,
           });
         }, 2600);
+
+        // Fixing the hover transition not working because of a conflict with Aos library.
+        if (canHover()) {
+          setTimeout(function () {
+            var aosCssLink = document.getElementById("aos-css");
+            if (aosCssLink) {
+              aosCssLink.parentNode.removeChild(aosCssLink);
+            }
+          }, 3800);
+        }
       };
 
+      // function to remove the animation delay on small devices
       function checkScreenWidth() {
         const section1 = document.getElementById("why-us");
         const section2 = document.getElementById("services");
