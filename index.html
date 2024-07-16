@@ -30,12 +30,23 @@
       href="mstile-150x150.png"
     />
     <meta name="theme-color" content="#000000" />
+    <link rel="preload" href="aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href="style.css" />
+    <noscript>
+        <link rel="stylesheet" href="aos.css">
+    </noscript>
   </head>
   <body>
-    <main class="container">
+    <div id="intro-wrapper" class="intro-wrapper">
+      <h1 class="company-name"><span>Soft 4 You</span></h1>
+      <h1 class="company-slogan">
+        <span>Bringing Soft Solutions For Your Success</span>
+      </h1>
+    </div>
+
+    <main id="container" class="container hide-temp" data-aos="zoom-in">
       <!-- logo -->
-      <section class="logo box">
+      <section class="logo box" data-aos="fade-right" data-aos-delay="300">
         <div class="logo-img-wrapper">
           <img src="S4U-logo-no-slogan-no-bg.webp" alt="Logo" />
         </div>
@@ -43,7 +54,11 @@
       </section>
 
       <!-- work-policies  -->
-      <section class="work-policies box">
+      <section
+        class="work-policies box"
+        data-aos="fade-right"
+        data-aos-delay="200"
+      >
         <h2>Work policies</h2>
         <div class="work-policies-content-wrapper">
           <a class="icon-content-wrapper">
@@ -140,7 +155,7 @@
       </section>
 
       <!-- portfolio -->
-      <section class="portfolio box">
+      <section class="portfolio box" data-aos="fade-left" data-aos-delay="200">
         <h2>UI Portfolio</h2>
         <div class="portfolio-content-wrapper">
           <div class="portfolio-img-wrapper"></div>
@@ -162,7 +177,12 @@
       </section>
 
       <!-- why us -->
-      <section class="why-us box">
+      <section
+        id="why-us"
+        class="why-us box"
+        data-aos="fade-left"
+        data-aos-delay="300"
+      >
         <h2>Why us?</h2>
         <div class="why-us-content-wrapper">
           <p>
@@ -174,7 +194,12 @@
       </section>
 
       <!-- services -->
-      <section class="services box">
+      <section
+        id="services"
+        class="services box"
+        data-aos="fade-right"
+        data-aos-delay="300"
+      >
         <h2>Services</h2>
         <div class="service-types">
           <div class="type">
@@ -194,7 +219,12 @@
       </section>
 
       <!-- reach us -->
-      <section class="reach-us">
+      <section
+        id="reach-us"
+        class="reach-us"
+        data-aos="fade-left"
+        data-aos-delay="300"
+      >
         <div class="contact box">
           <h2>Contact us</h2>
           <div class="contact-content-wrapper">
@@ -258,5 +288,60 @@
         </div>
       </section>
     </main>
+    <script src="aos.js" defer></script>
+    <script defer>
+      // Intro animation logic
+
+      function removeElementAfterDelay(elementId, elementToShowId) {
+        const elementToHide = document.getElementById(elementId);
+        const elementToShow = document.getElementById(elementToShowId);
+
+        if (elementToHide) {
+          setTimeout(() => {
+            elementToHide.remove();
+            elementToShow.classList.remove("hide-temp");
+          }, 2500);
+        }
+      }
+
+      window.onload = () => {
+        removeElementAfterDelay("intro-wrapper", "container");
+        setTimeout(() => {
+          AOS.init({
+            once: true,
+          });
+        }, 2600);
+      };
+
+      function checkScreenWidth() {
+        const section1 = document.getElementById("why-us");
+        const section2 = document.getElementById("services");
+        const section3 = document.getElementById("reach-us");
+        if (window.innerWidth < 1281) {
+          if (section1.hasAttribute("data-aos-delay")) {
+            section1.removeAttribute("data-aos-delay");
+            section2.removeAttribute("data-aos-delay");
+            section3.removeAttribute("data-aos-delay");
+            console.log("Attribute removed");
+          }
+        } else {
+          if (!section1.hasAttribute("data-aos-delay")) {
+            section1.setAttribute("data-aos-delay", "300");
+            section2.setAttribute("data-aos-delay", "300");
+            section3.setAttribute("data-aos-delay", "300");
+            console.log("Attribute added back");
+          }
+        }
+      }
+
+      window.addEventListener("resize", checkScreenWidth);
+
+      checkScreenWidth();
+    </script>
   </body>
 </html>
+
+<!-- TODO: 
+  . Add sound to the website
+  . Finish the other pages
+  -->

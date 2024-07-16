@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Exo";
   src: url("./Exo2-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
 }
 
 :root {
@@ -21,11 +22,91 @@
 body {
   background-color: #000;
   font-family: "Exo", sans-serif;
+  overflow-x: hidden;
+}
+
+.intro-wrapper {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 1em;
+  height: 100svh;
+  padding: 1em;
+}
+
+.company-name {
+  text-align: center;
+  font-size: 3rem;
+  -webkit-animation: focus-in-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: focus-in-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.company-slogan {
+  text-align: center;
+  font-size: clamp(0.9rem, 4vw, 2rem);
+  -webkit-animation: focus-in-expand2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    0.8s both;
+  animation: focus-in-expand2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+}
+
+@-webkit-keyframes focus-in-expand2 {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focus-in-expand2 {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
 }
 
 .container {
   height: calc(100vh - 4em);
-  /* overflow-y: auto; */
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -34,11 +115,15 @@ body {
   padding-inline: 2.5em;
   margin: 2em;
   border-radius: 2em;
-  background-color: rgba(14, 130, 255, 0.18);
+  background-color: rgba(14, 130, 255, 0.14);
   border: 1px solid rgba(14, 130, 255, 0.3);
   -webkit-box-shadow: 0px 0px 17px -1px rgba(14, 130, 255, 1);
   -moz-box-shadow: 0px 0px 17px -1px rgba(14, 130, 255, 1);
   box-shadow: 0px 0px 17px -1px rgba(14, 130, 255, 1);
+}
+
+.hide-temp {
+  display: none;
 }
 
 section {
@@ -164,7 +249,7 @@ span {
 }
 
 .work-policies .icon-content-wrapper:active {
-   transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .work-policies .icon-content-wrapper:first-child {

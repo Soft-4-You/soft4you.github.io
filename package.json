@@ -1,0 +1,23 @@
+{
+  "name": "s4y-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soft-4-You/soft4you.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Soft-4-You/soft4you.github.io/issues"
+  },
+  "homepage": "https://github.com/Soft-4-You/soft4you.github.io#readme",
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4"
+  }
+}
