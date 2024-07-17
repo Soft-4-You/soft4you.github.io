@@ -73,7 +73,7 @@ h1 {
 .flex-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 4em;
 }
 
