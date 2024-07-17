@@ -11,7 +11,7 @@
   --sb-size: 8px;
 }
 
-* {
+*:not(dialog) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -131,10 +131,110 @@ body::-webkit-scrollbar-thumb {
 
 #audioButton {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #003a77;
+  bottom: 40px;
+  right: 40px;
+  margin: 0;
+  font-size: 1rem;
+  background-color: #004d9e;
   z-index: 999;
+}
+
+dialog {
+  opacity: 0;
+  transform: scale(0);
+  display: block;
+  width: 570px;
+  background-image: linear-gradient(135deg, #001e3e 0%, #002b58 100%);
+  color: #dedede;
+  padding-block: 1.5em;
+  padding-inline: 2.5em;
+  border: none;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 0px 17px 5px rgb(0, 17, 35);
+  -moz-box-shadow: 0px 0px 17px 5px rgb(0, 17, 35);
+  box-shadow: 0px 0px 17px 5px rgb(0, 17, 35);
+  transition: opacity 0.6s ease;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal[open]::backdrop {
+  transition: all 1s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.modal-close {
+  background-color: transparent;
+  color: White;
+  font-size: 1.5rem;
+  border: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  cursor: pointer;
+  color: rgb(13 179 255);
+}
+
+.modal-close:active {
+  transform: scale(0.9);
+}
+
+dialog p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 2em;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+}
+
+.modal-btn {
+  border-radius: 2em;
+  background-color: #001e3e;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  letter-spacing: 2px;
+  padding: 1.2em;
+  padding-top: 1.3em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+  cursor: pointer;
+  -webkit-box-shadow: rgb(13 179 255) 0px 0px 10px 2px;
+  -moz-box-shadow: rgb(13 179 255) 0px 0px 10px 2px;
+  box-shadow: rgb(13 179 255) 0px 0px 10px 2px;
+}
+
+.modal-btn:active {
+  transform: scale(0.95);
 }
 
 .container {
@@ -268,10 +368,12 @@ span {
   gap: 1em;
   border-radius: 2em;
   background-color: #001e3e;
+  color: inherit;
   padding: 1.2em;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   outline: none;
+  border: none;
   transition: all 0.3s ease;
 }
 
@@ -602,11 +704,9 @@ span {
 
 @media (max-width: 550px) {
   #audioButton {
-    position: fixed;
-    bottom: 7px;
-    right: 7px;
-    background-color: #003a77;
-    z-index: 999;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
   }
 
   .container {
