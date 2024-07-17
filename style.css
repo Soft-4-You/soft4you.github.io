@@ -553,6 +553,7 @@ span {
 
 .contact a svg {
   color: #0db3ff;
+  width: 35px;
 }
 
 .contact a:hover {
@@ -644,7 +645,11 @@ span {
   }
 
   .contact p {
-    font-size: clamp(1.2rem, 1.5vw, 2rem);
+    font-size: clamp(1rem, 1.5vw, 2rem);
+  }
+
+  .contact .email {
+    font-size: clamp(0.85rem, 3.7vw, 2rem);
   }
 
   .social-media img {
@@ -733,5 +738,13 @@ span {
   }
   h3 {
     font-size: clamp(1.55rem, 1.5vw, 2.2rem);
+  }
+
+  .contact a svg {
+    width: 25px;
+  }
+
+  .social-media img {
+    width: 40px;
   }
 }

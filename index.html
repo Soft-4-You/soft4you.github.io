@@ -67,7 +67,9 @@
     <dialog id="needs">
       <div class="modal-header">
         <h1>Understanding your needs</h1>
-        <button onclick="needs.close()" class="modal-close clickAudioButton">✖</button>
+        <button onclick="needs.close()" class="modal-close clickAudioButton">
+          ✖
+        </button>
       </div>
       <p>First we hear all from you to understand what you really need.</p>
       <div class="modal-footer">
@@ -83,7 +85,12 @@
     <dialog id="consulting">
       <div class="modal-header">
         <h1>Consultation</h1>
-        <button onclick="consulting.close()" class="modal-close clickAudioButton">✖</button>
+        <button
+          onclick="consulting.close()"
+          class="modal-close clickAudioButton"
+        >
+          ✖
+        </button>
       </div>
       <p>
         Recommending you the best solution wether its a ready-to-deploy solution
@@ -108,7 +115,9 @@
     <dialog id="contract">
       <div class="modal-header">
         <h1>Signing a contract</h1>
-        <button onclick="contract.close()" class="modal-close clickAudioButton">✖</button>
+        <button onclick="contract.close()" class="modal-close clickAudioButton">
+          ✖
+        </button>
       </div>
       <p>
         We sign a detailed contract to guarantee the rights of both parties.
@@ -327,7 +336,6 @@
               class="icon-content-wrapper clickAudioButton"
             >
               <svg
-                style="width: 35px"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -345,7 +353,6 @@
               class="icon-content-wrapper clickAudioButton"
             >
               <svg
-                style="width: 35px"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -361,7 +368,7 @@
                   d="M2 5.5L11.0454 12.9625C11.5997 13.4197 12.4003 13.4197 12.9546 12.9625L22 5.5"
                 />
               </svg>
-              <p>Email@gmail.com</p>
+              <p class="email">soft4you.dev@gmail.com</p>
             </a>
           </div>
         </div>
@@ -373,8 +380,7 @@
           >
             <img src="./Facebook-icon.webp" alt="Facebook icon" />
           </a>
-          <!-- href = "whatsapp://send?phone=+9647712298655" -->
-          <a target="_blank">
+          <a href="whatsapp://send?phone=+9647712298655" target="_blank">
             <img
               src="./WhatsApp-icon.webp"
               alt="WhatsApp icon"
