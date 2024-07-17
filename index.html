@@ -63,6 +63,66 @@
     <!-- Audio toggle button  -->
     <button id="audioButton" class="btn">🔊</button>
 
+    <!-- Dialogs -->
+    <dialog id="needs">
+      <div class="modal-header">
+        <h1>Understanding your needs</h1>
+        <button onclick="needs.close()" class="modal-close">✖</button>
+      </div>
+      <p>First we hear all from you to understand what you really need.</p>
+      <div class="modal-footer">
+        <button
+          onclick="needs.close() + consulting.showModal()"
+          class="modal-btn"
+        >
+          Next
+        </button>
+      </div>
+    </dialog>
+
+    <dialog id="consulting">
+      <div class="modal-header">
+        <h1>Consultation</h1>
+        <button onclick="consulting.close()" class="modal-close">✖</button>
+      </div>
+      <p>
+        Recommending you the best solution wether its a ready-to-deploy solution
+        or custom software that meet your needs.
+      </p>
+      <div class="modal-footer">
+        <button
+          onclick="consulting.close() + needs.showModal()"
+          class="modal-btn"
+        >
+          Previous
+        </button>
+        <button
+          onclick="consulting.close() + contract.showModal()"
+          class="modal-btn"
+        >
+          Next
+        </button>
+      </div>
+    </dialog>
+
+    <dialog id="contract">
+      <div class="modal-header">
+        <h1>Signing a contract</h1>
+        <button onclick="contract.close()" class="modal-close">✖</button>
+      </div>
+      <p>
+        We sign a detailed contract to guarantee the rights of both parties.
+      </p>
+      <div class="modal-footer">
+        <button
+          onclick="contract.close() + consulting.showModal()"
+          class="modal-btn"
+        >
+          Previous
+        </button>
+      </div>
+    </dialog>
+
     <main
       id="container"
       class="container hide-temp transition-fade"
@@ -84,7 +144,10 @@
       >
         <h2>Work policies</h2>
         <div class="work-policies-content-wrapper">
-          <a class="icon-content-wrapper clickAudioButton">
+          <button
+            onclick="needs.showModal()"
+            class="icon-content-wrapper clickAudioButton"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -116,8 +179,11 @@
               />
             </svg>
             <p>Needs</p>
-          </a>
-          <a class="icon-content-wrapper clickAudioButton">
+          </button>
+          <button
+            onclick="consulting.showModal()"
+            class="icon-content-wrapper clickAudioButton"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -135,9 +201,12 @@
                 d="M10.8107 21.5607L9.18934 19.9393C8.90804 19.658 8.5265 19.5 8.12868 19.5H6.12132C5.7235 19.5 5.34196 19.342 5.06066 19.0607L4.93934 18.9393C4.65804 18.658 4.5 18.2765 4.5 17.8787V15.8713C4.5 15.4735 4.34197 15.092 4.06066 14.8107L2.43934 13.1893C2.15804 12.908 2 12.5265 2 12.1287V11.8713C2 11.4735 2.15803 11.092 2.43934 10.8107L4.06066 9.18934C4.34196 8.90804 4.5 8.5265 4.5 8.12868V6.12132C4.5 5.7235 4.65804 5.34196 4.93934 5.06066L5.06066 4.93934C5.34196 4.65804 5.7235 4.5 6.12132 4.5H8.12868C8.5265 4.5 8.90803 4.34197 9.18934 4.06066L10.8107 2.43934C11.092 2.15804 11.4735 2 11.8713 2H12.1287C12.5265 2 12.908 2.15803 13.1893 2.43934L14.8107 4.06066C15.092 4.34196 15.4735 4.5 15.8713 4.5H17.8787C18.2765 4.5 18.658 4.65804 18.9393 4.93934L19.0607 5.06066C19.342 5.34196 19.5 5.7235 19.5 6.12132V8.12868C19.5 8.5265 19.658 8.90803 19.9393 9.18934L21.5607 10.8107C21.842 11.092 22 11.4735 22 11.8713V12.1287C22 12.5265 21.842 12.908 21.5607 13.1893L19.9393 14.8107C19.658 15.092 19.5 15.4735 19.5 15.8713V17.8787C19.5 18.2765 19.342 18.658 19.0607 18.9393L18.9393 19.0607C18.658 19.342 18.2765 19.5 17.8787 19.5H15.8713C15.4735 19.5 15.092 19.658 14.8107 19.9393L13.1893 21.5607C12.908 21.842 12.5265 22 12.1287 22H11.8713C11.4735 22 11.092 21.842 10.8107 21.5607Z"
               />
             </svg>
-            <p>Consulting</p>
-          </a>
-          <a class="icon-content-wrapper clickAudioButton">
+            <p>Consultation</p>
+          </button>
+          <button
+            onclick="contract.showModal()"
+            class="icon-content-wrapper clickAudioButton"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -173,7 +242,7 @@
               />
             </svg>
             <p>Contract</p>
-          </a>
+          </button>
         </div>
       </section>
 
@@ -328,7 +397,17 @@
 
     <script defer>
       function canHover() {
-        return window.matchMedia("(hover: hover)").matches;
+        // Check if the device supports touch events
+        const hasTouch =
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          navigator.msMaxTouchPoints > 0;
+
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+        return (
+          !hasTouch && !isMobile && window.matchMedia("(hover: hover)").matches
+        );
       }
 
       // Create an audio object

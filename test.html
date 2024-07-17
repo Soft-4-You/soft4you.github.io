@@ -5,52 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Howler.js AudioContext Handling</title>
     <style>
-      .clickable-element {
-        background-color: blue;
-        transition: background-color 0.3s ease;
-        padding: 20px;
-        margin: 20px;
-        color: white;
-        cursor: pointer;
+      dialog {
+        opacity: 0;
+        transform: scale(0);
+        display: block;
+        transition: opacity 1s ease;
+        background-color: red;
       }
 
-      .clickable-element:hover {
-        background-color: red;
+      dialog[open] {
+        opacity: 1;
+        transform: scale(1);
       }
     </style>
   </head>
   <body>
-    <div class="clickable-element">Click me 1!</div>
-    <div class="clickable-element">Click me 2!</div>
-    <div class="clickable-element">Click me 3!</div>
-    <div class="clickable-element"><a href="test2.html">test2</a></div>
-    <!-- Include Howler.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <!-- Include Howler.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script>
-      // Initialize AudioContext globally
-      var context = new (window.AudioContext || window.webkitAudioContext)();
-      Howler.ctx = context; // Set Howler.js to use the global AudioContext
+    <button onclick="needs.showModal()">open</button>
 
-      // Define the sound
-      var clickSound = new Howl({
-        src: ["click-buttons.mp3"],
-      });
-
-      // Function to play sound on click
-      function playClickSound() {
-        clickSound.play();
-      }
-
-      // Add click event listener to all elements with the class 'clickable-element'
-      var clickableElements = document.querySelectorAll(".clickable-element");
-      clickableElements.forEach(function (element) {
-        element.addEventListener("click", function () {
-          playClickSound();
-        });
-      });
-    </script>
-    
+    <dialog id="needs">
+      <h1>test</h1>
+    </dialog>
   </body>
 </html>
