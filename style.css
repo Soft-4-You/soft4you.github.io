@@ -601,6 +601,14 @@ span {
 }
 
 @media (max-width: 550px) {
+  #audioButton {
+    position: fixed;
+    bottom: 7px;
+    right: 7px;
+    background-color: #003a77;
+    z-index: 999;
+  }
+
   .container {
     padding-block: 2em;
     padding-inline: 1.5em;
