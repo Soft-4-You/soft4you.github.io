@@ -60,6 +60,9 @@
       </h1>
     </div>
 
+    <!-- Audio toggle button  -->
+    <button id="audioButton" class="btn">🔊</button>
+
     <main
       id="container"
       class="container hide-temp transition-fade"
@@ -81,7 +84,7 @@
       >
         <h2>Work policies</h2>
         <div class="work-policies-content-wrapper">
-          <a class="icon-content-wrapper">
+          <a class="icon-content-wrapper clickAudioButton">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -114,7 +117,7 @@
             </svg>
             <p>Needs</p>
           </a>
-          <a class="icon-content-wrapper">
+          <a class="icon-content-wrapper clickAudioButton">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -134,7 +137,7 @@
             </svg>
             <p>Consulting</p>
           </a>
-          <a class="icon-content-wrapper">
+          <a class="icon-content-wrapper clickAudioButton">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -191,7 +194,7 @@
                 d="M2 5C2 4.17157 2.67157 3.5 3.5 3.5H8.87868C9.2765 3.5 9.65804 3.65804 9.93934 3.93934L11.5607 5.56066C11.842 5.84197 12.2235 6 12.6213 6H20.5C21.3284 6 22 6.67157 22 7.5V18C22 18.8284 21.3284 19.5 20.5 19.5H3.5C2.67157 19.5 2 18.8284 2 18V5Z"
               />
             </svg>
-            <a href="ui_portfolio.html" class="btn">Show More</a>
+            <a href="ui_portfolio.html" class="btn clickAudioButton">Show More</a>
           </div>
         </div>
       </section>
@@ -248,7 +251,7 @@
         <div class="contact box">
           <h2>Contact us</h2>
           <div class="contact-content-wrapper">
-            <a href="tel:07712298655" class="icon-content-wrapper">
+            <a href="tel:07712298655" class="icon-content-wrapper clickAudioButton">
               <svg
                 style="width: 35px"
                 xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +268,7 @@
             </a>
             <a
               href="mailto:soft4you.dev@gmail.com"
-              class="icon-content-wrapper"
+              class="icon-content-wrapper clickAudioButton"
             >
               <svg
                 style="width: 35px"
@@ -292,16 +295,18 @@
           <a
             href="https://www.facebook.com/profile.php?id=100095168590561"
             target="_blank"
+            class="clickAudioButton"
           >
             <img src="./Facebook-icon.webp" alt="Facebook icon" />
           </a>
           <!-- href = "whatsapp://send?phone=+9647712298655" -->
           <a target="_blank">
-            <img src="./WhatsApp-icon.webp" alt="WhatsApp icon" />
+            <img src="./WhatsApp-icon.webp" alt="WhatsApp icon" class="clickAudioButton"/>
           </a>
           <a
             href="https://www.instagram.com/soft_4_you_dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
+            class="clickAudioButton"
           >
             <img src="./Instagram-icon.webp" alt="Instagram icon" />
           </a>
@@ -316,6 +321,40 @@
       function canHover() {
         return window.matchMedia("(hover: hover)").matches;
       }
+
+      // Create an audio object
+      var audio = new Audio("bg-music.mp3");
+      audio.loop = true;
+      var isPlaying = false;
+
+      // Function to toggle audio play/pause
+      function toggleAudio() {
+        if (isPlaying) {
+          audio.pause();
+          document.getElementById("audioButton").textContent = "🔊";
+        } else {
+          audio.play().catch(function (error) {
+            console.log("Audio play failed: " + error);
+          });
+          document.getElementById("audioButton").textContent = "🔇";
+        }
+        isPlaying = !isPlaying;
+      }
+
+      function playClickSound() {
+        var clickAudio = new Audio("click-buttons.mp3");
+        clickAudio.play().catch(function (error) {
+          console.log("Second audio play failed: " + error);
+        });
+      }
+
+      document
+        .getElementById("audioButton")
+        .addEventListener("click", toggleAudio);
+
+      document.querySelectorAll(".clickAudioButton").forEach(function (button) {
+        button.addEventListener("click", playClickSound);
+      });
 
       // Intro animation logic
       function removeElementAfterDelay(elementId, elementToShowId) {
@@ -359,14 +398,12 @@
             section1.removeAttribute("data-aos-delay");
             section2.removeAttribute("data-aos-delay");
             section3.removeAttribute("data-aos-delay");
-            console.log("Attribute removed");
           }
         } else {
           if (!section1.hasAttribute("data-aos-delay")) {
             section1.setAttribute("data-aos-delay", "300");
             section2.setAttribute("data-aos-delay", "300");
             section3.setAttribute("data-aos-delay", "300");
-            console.log("Attribute added back");
           }
         }
       }
@@ -387,7 +424,5 @@
 </html>
 
 <!-- TODO: 
-  . Add sound to the website
   . Finish the other pages
-  . Scroll bar design 
   -->
