@@ -239,6 +239,7 @@ dialog p {
 }
 
 .container {
+  overflow-x: hidden;
   height: calc(100vh - 4em);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -717,7 +718,7 @@ span {
   }
 
   dialog {
-    width: calc(100% - 8em);
+    width: calc(100% - 7em);
     padding-block: 1em;
     padding-inline: 1.5em;
   }
