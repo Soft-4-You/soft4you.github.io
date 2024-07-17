@@ -61,7 +61,7 @@
     </div>
 
     <!-- Audio toggle button  -->
-    <button id="audioButton" class="btn">🔊</button>
+    <button id="audioButton" class="btn">🔇</button>
 
     <!-- Dialogs -->
     <dialog id="needs">
@@ -402,6 +402,12 @@
     <script src="https://unpkg.com/swup@4"></script>
 
     <script defer>
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            // The page was loaded from cache
+            window.location.reload(true);
+        }
+    });
       function canHover() {
         // Check if the device supports touch events
         const hasTouch =
