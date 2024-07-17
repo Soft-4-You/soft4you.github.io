@@ -38,25 +38,16 @@
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <link rel="stylesheet" href="ui_portfolio.css" />
-
-    <style>
-      /* Define a transition duration during page visits */
-      html.is-changing .transition-fade {
-        transition: opacity 0.100ms;
-        opacity: 1;
-      }
-
-      /* Define the styles for the unloaded pages */
-      html.is-animating .transition-fade {
-        opacity: 0;
-      }
-    </style>
   </head>
   <body>
-    <main id="container" class="container transition-fade" data-aos="zoom-in">
+    <!-- Audio toggle button  -->
+    <button id="audioButton" class="btn">🔊</button>
+
+    <main class="container transition-fade" data-aos="zoom-in">
       <h1>UI PORTFOLIO</h1>
+
       <div class="flex-wrapper">
-        <a href="index.html" data-aos="zoom-in">
+        <a href="index.html" target="_blank" class="clickAudioButton" data-aos="zoom-in">
           <div class="card">
             <div class="img"></div>
             <div class="text">
@@ -66,14 +57,45 @@
             </div>
           </div>
         </a>
-
       </div>
     </main>
 
     <script src="aos.js" defer></script>
-    <script src="https://unpkg.com/swup@4"></script>
-
     <script defer>
+      // Create an audio object
+      var audio = new Audio("bg-music.mp3");
+      audio.loop = true;
+      var isPlaying = false;
+
+      // Function to toggle audio play/pause
+      function toggleAudio() {
+        if (isPlaying) {
+          audio.pause();
+          document.getElementById("audioButton").textContent = "🔊";
+        } else {
+          audio.play().catch(function (error) {
+            console.log("Audio play failed: " + error);
+          });
+          document.getElementById("audioButton").textContent = "🔇";
+        }
+        isPlaying = !isPlaying;
+      }
+
+      function playClickSound() {
+        var clickAudio = new Audio("click-buttons.mp3");
+        clickAudio.play().catch(function (error) {
+          console.log("Second audio play failed: " + error);
+        });
+      }
+
+      document
+        .getElementById("audioButton")
+        .addEventListener("click", toggleAudio);
+
+      document.querySelectorAll(".clickAudioButton").forEach(function (button) {
+        button.addEventListener("click", playClickSound);
+      });
+
       window.onload = () => {
         AOS.init({
           once: true,
@@ -83,14 +105,6 @@
           window.scrollTo(0, 0);
         }, 50);
       };
-    </script>
-
-    <script type="module">
-      import Swup from "https://unpkg.com/swup@4?module";
-
-      var swup = new Swup({
-        containers: ["#container"],
-      });
     </script>
   </body>
 </html>
