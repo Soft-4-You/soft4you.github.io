@@ -425,12 +425,12 @@
       function toggleAudio() {
         if (isPlaying) {
           audio.pause();
-          document.getElementById("audioButton").textContent = "🔊";
+          document.getElementById("audioButton").textContent = "🔇";
         } else {
           audio.play().catch(function (error) {
             console.log("Audio play failed: " + error);
           });
-          document.getElementById("audioButton").textContent = "🔇";
+          document.getElementById("audioButton").textContent = "🔊";
         }
         isPlaying = !isPlaying;
       }
