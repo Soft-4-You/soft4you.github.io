@@ -191,7 +191,7 @@ dialog[open] {
 
 .modal-close:hover {
   cursor: pointer;
-  color: rgb(13 179 255);
+  color: #0db3ff;
 }
 
 .modal-close:active {
